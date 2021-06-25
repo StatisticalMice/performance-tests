@@ -1,9 +1,9 @@
-using Genie.Router, JSON3
+using Genie.Router, Genie.Renderer.Html, Genie.Renderer.Json
 
 route("/") do
-  "Welcome to Genie! This site is served by Julia $(Base.VERSION) with $(Threads.nthreads()) threads."
+  html("Welcome to Genie! This site is served by Julia $(Base.VERSION) with $(Threads.nthreads()) threads.")
 end
 
 route("/random") do
- JSON3.write(rand(Int, parse(Int64, @params(:num, "1"))))
+  json(rand(Int, parse(Int64, @params(:num, "1"))))
 end
