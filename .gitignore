@@ -28,4 +28,5 @@ target/
 
 # Dev
 .vscode/
+.DS_Store
 

@@ -10,6 +10,10 @@ cd GenieApp
 bin/repl
 julia> up()
 
+## Run plain Julia HTTP server with
+
+julia --project=. --threads=auto http_server.jl
+
 ## Run Goose Attack with Rust
 
 cd GooseAttack
