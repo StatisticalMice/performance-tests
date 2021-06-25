@@ -8,7 +8,10 @@ https://docs.rs/crate/goose/0.11.2
 
 cd GenieApp  
 bin/repl  
-julia> up()
+julia>  
+using Logging
+Logging.global_logger(NullLogger())
+up()
 
 ## Run plain Julia HTTP server with
 
