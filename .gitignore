@@ -31,3 +31,4 @@ target/
 .DS_Store
 
 attack_report.html
+attack_requests.csv

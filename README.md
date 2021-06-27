@@ -8,23 +8,20 @@ https://docs.rs/crate/goose/0.11.2
 
 export JULIA_NUM_THREADS=auto
 
-## Run Julia web server with
+## Run Genie web server with
 
-cd GenieApp  
-bin/repl  
-julia> up()  
+./start_genie.sh&
 
 ## Run plain Julia HTTP server with
 
-julia --project=. http_server.jl  
+./start_http.sh&
+
+## Disturb the geese
+
+./disturb_geese.sh
 
 ## Python Flask App
 
 https://flask.palletsprojects.com/en/2.0.x/  
 You'll need flask installed.  
 python FlaskApp/main.py  
-
-## Run Goose Attack with Rust
-
-cd GooseAttack  
-cargo run --release -- --host http://127.0.0.1:8000 --run-time 2m --verbose --users 30 --hatch-rate 2 -R ../attack_report.html  
