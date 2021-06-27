@@ -27,4 +27,4 @@ python FlaskApp/main.py
 ## Run Goose Attack with Rust
 
 cd GooseAttack  
-cargo run --release -- --host http://127.0.0.1:8000 -t 2m -v -u30 -r2 -R attack_report.html  
+cargo run --release -- --host http://127.0.0.1:8000 --run-time 2m --verbose --users 30 --hatch-rate 2 -R ../attack_report.html  

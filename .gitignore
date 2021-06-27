@@ -30,3 +30,4 @@ target/
 .vscode/
 .DS_Store
 
+attack_report.html
