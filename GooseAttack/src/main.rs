@@ -3,35 +3,29 @@ use goose::prelude::*;
 fn main() -> Result<(), GooseError> {
     let _goose_metrics = GooseAttack::initialize()?
         .register_taskset(taskset!("LoadtestTasks")
-            // Register the greeting task, assigning it a weight of 1.
-            .register_task(task!(loadtest_root).set_name("root").set_weight(1)?)
-            // Register the random task, assigning it a weight of 1
-            .register_task(task!(loadtest_random).set_name("random").set_weight(1)?)
-            // Register the random_10 task, assigning it a weight of 1
-            .register_task(task!(loadtest_random_100).set_name("random_100").set_weight(1)?)
+            .register_task(task!(loadtest_welcome_html).set_name("welcome.html").set_weight(1)?)
+            .register_task(task!(loadtest_greeting).set_name("greeting").set_weight(10)?)
+            .register_task(task!(loadtest_random_1000).set_name("random?num=1000").set_weight(10)?)
         )
         .execute()?;
 
     Ok(())
 }
 
-// A task function that loads `/`.
-async fn loadtest_root(user: &GooseUser) -> GooseTaskResult {
+async fn loadtest_welcome_html(user: &GooseUser) -> GooseTaskResult {
     let _goose = user.get("/").await?;
 
     Ok(())
 }   
 
-// A task function that loads `/path/to/random`.
-async fn loadtest_random(user: &GooseUser) -> GooseTaskResult {
-    let _goose = user.get("/random").await?;
+async fn loadtest_greeting(user: &GooseUser) -> GooseTaskResult {
+    let _goose = user.get("/greeting").await?;
 
     Ok(())
 } 
 
-// A task function that loads `/path/to/random?num=100`.
-async fn loadtest_random_100(user: &GooseUser) -> GooseTaskResult {
-    let _goose = user.get("/random?num=100").await?;
+async fn loadtest_random_1000(user: &GooseUser) -> GooseTaskResult {
+    let _goose = user.get("/random?num=1000").await?;
 
     Ok(())
 } 
