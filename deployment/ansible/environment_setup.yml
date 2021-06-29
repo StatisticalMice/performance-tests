@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: yes
+  tasks: 
+
+  - name: Check current user
+    command: whoami
+    register: output
+    changed_when: False
+  
+  - name: Print current user
+    debug: var=output.stdout
+
+  - name: Update and upgrade apt packages
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400 # 1 day
+
+  - name: Install apt packages
+    apt:
+      pkg:
+      - python3-pip
+      - wget
+      - git
+      - libssl-dev
+
+      

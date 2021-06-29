@@ -1,0 +1,6 @@
+plugin: gcp_compute
+projects:
+  - aris-test-project-317919
+auth_kind: serviceaccount
+service_account_file: /Users/arihuttunen/google-cloud-secrets/aris-test-project-317919-2231aebd7bf8.json
+

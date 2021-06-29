@@ -32,3 +32,6 @@ target/
 
 attack_report.html
 attack_requests.csv
+deployment/terraform/terraform.tfstate
+deployment/terraform/terraform.tfstate.backup
+deployment/terraform/.terraform/
