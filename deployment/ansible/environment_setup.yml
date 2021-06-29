@@ -1,0 +1,59 @@
+---
+- hosts: all
+  tasks:
+
+    - name: Check current user
+      command: whoami
+      register: output
+      changed_when: False
+
+    - name: Print current user
+      debug: var=output.stdout
+
+    - name: Check current directory
+      command: pwd
+      register: output
+      changed_when: False
+
+    - name: Print current directory
+      debug: var=output.stdout
+
+    - name: Update and upgrade apt packages
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 # 1 day
+      become: yes
+
+    - name: Install apt packages
+      apt:
+        pkg:
+          - python3-pip
+          - wget
+          - git
+          - libssl-dev
+          - build-essential
+          - libffi-dev
+          - python3-dev
+          - acl
+          - pkg-config
+      become: yes
+
+    - name: Install python packages
+      pip:
+        name:
+          - Flask
+          - numpy
+          - jill 
+        executable: pip3
+
+    - name: Install Rust
+      shell: curl https://sh.rustup.rs -sSf | sh -s -- -y
+
+    - name: Install Julia
+      shell: bash -ilc 'jill install --confirm' # running via bash is required for correct PATH
+
+    - name: Download the test scripts
+      shell: git clone https://github.com/StatisticalMice/performance-tests.git
+
+
