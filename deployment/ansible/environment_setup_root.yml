@@ -2,7 +2,7 @@
 - hosts: all
   become: yes
   tasks: 
-
+    
   - name: Check current user
     command: whoami
     register: output
@@ -24,5 +24,19 @@
       - wget
       - git
       - libssl-dev
+      - build-essential
+      - libffi-dev
+      - python3-dev
+      - acl
 
-      
+  - name: Install python packages
+    pip:
+      name: 
+        - Flask 
+        - numpy
+      executable: pip3
+
+  - name: Create user horza
+    ansible.builtin.user:
+      name: horza
+      shell: /bin/bash

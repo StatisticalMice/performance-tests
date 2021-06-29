@@ -1,0 +1,18 @@
+Terraform commands
+==================
+
+export TF_LOG=WARN
+
+terraform plan
+terraform apply
+terraform destroy
+
+Ansible commands
+================
+
+ansible-inventory --list -i inventory.gcp.yml
+
+ansible all -i inventory.gcp.yml -m ping
+
+ansible-playbook -i inventory.gcp.yml environment_setup.yml
+
