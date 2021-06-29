@@ -28,5 +28,5 @@ HTTP.@register(ROUTER, "GET", "/", serveWelcome)
 HTTP.@register(ROUTER, "GET", "/greeting", serveGreeting)
 HTTP.@register(ROUTER, "GET", "/random", serveRandom)
 
-#Logging.global_logger(NullLogger())
+Logging.global_logger(NullLogger())
 HTTP.serve(ROUTER, Sockets.localhost, 8000)
