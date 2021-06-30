@@ -6,17 +6,21 @@
       command: whoami
       register: output
       changed_when: False
+      when: 0>1
 
     - name: Print current user
       debug: var=output.stdout
+      when: 0>1
 
     - name: Check current directory
       command: pwd
       register: output
       changed_when: False
+      when: 0>1
 
     - name: Print current directory
       debug: var=output.stdout
+      when: 0>1
 
     - name: Update and upgrade apt packages
       apt:
@@ -24,6 +28,7 @@
         update_cache: yes
         cache_valid_time: 86400 # 1 day
       become: yes
+      when: 0>1
 
     - name: Install apt packages
       apt:
@@ -55,5 +60,10 @@
 
     - name: Download the test scripts
       shell: git clone https://github.com/StatisticalMice/performance-tests.git
+      #TODO: prevent trying to clone the second time
 
+    - name: Instantiate Julia environment
+      shell: bash -ilc 'julia --project=performance-tests -e "using Pkg; Pkg.instantiate();"' 
 
+    - name: Instantiate Julia environment (2)
+      shell: bash -ilc 'julia --project=performance-tests/GenieApp -e "using Pkg; Pkg.instantiate();"' 

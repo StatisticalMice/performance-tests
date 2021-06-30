@@ -1,3 +1,8 @@
+Overall notes
+=============
+
+To re-use the scripts, you need to configure at least the credentials, project, and region.
+
 Terraform commands
 ==================
 
