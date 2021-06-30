@@ -11,7 +11,7 @@ route("/greeting", named = :greeting) do
 end
 
 route("/random", named = :random) do
-  p = haskey(@params, :num) ? @params(:num) : "1"
+  p = haskey(_params_(), :num) ? _params_()(:num) : "1"
   num = tryparse(Int32, p)
   if (num === nothing || num < 1) 
     num = 1
