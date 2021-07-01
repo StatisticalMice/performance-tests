@@ -13,7 +13,7 @@ resource "random_id" "instance_id" {
 // VM that runs the web server
 resource "google_compute_instance" "web_server" {
   name         = "perftest-web-server-vm-${random_id.instance_id.hex}"
-  machine_type = "e2-standard-2"
+  machine_type = "e2-standard-4"
   zone         = "europe-north1-a"
 
   tags = ["perftest-web-server"]
@@ -37,7 +37,7 @@ resource "google_compute_instance" "web_server" {
 // VM that runs Goose Attack
 resource "google_compute_instance" "geese" {
   name         = "perftest-geese-vm-${random_id.instance_id.hex}"
-  machine_type = "e2-standard-2"
+  machine_type = "e2-standard-4"
   zone         = "europe-north1-a"
 
   tags = ["perftest-geese"]
