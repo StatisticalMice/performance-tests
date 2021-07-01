@@ -7,10 +7,11 @@ https://docs.rs/crate/goose/0.11.2
 ## Rules
 
 Performance tests are run with two configurations: 
-- One thread without logging
-- Multiple threads without logging (number of threads equal to virtual cores)
+- One thread
+- Multiple threads, number of threads equal to virtual cores
 
-For troubleshooting testing, run with logging on the console.
+Logging to the console is turned on. Logging to a file is turned off.
+This is for troubleshooting purposes.
 
 Performance testing is run for:
 - "/greeting"
@@ -50,7 +51,17 @@ julia --project=. http_server.jl
 Use port 11000 to test HTTP.jl. Use 12000 to test Genie.jl.
 
 cd GooseAttack  
-cargo run --release -- --host http://10.166.0.33:12000 --run-time 5m \
+
+HTTP.jl
+=======
+cargo run --release -- --host http://10.166.0.35:11000 --run-time 2m \
 --users 50 --hatch-rate 5 --running-metrics 10 --verbose \
---requests-file ../attack_requests.csv --requests-format csv \
--R ../attack_report.html
+--requests-file ../attack_requests-http.csv --requests-format csv \
+-R ../attack_report-http_e2_standard_4_threads_N.html
+
+Genie.jl
+========
+cargo run --release -- --host http://10.166.0.35:12000 --run-time 2m \
+--users 50 --hatch-rate 5 --running-metrics 10 --verbose \
+--requests-file ../attack_requests-genie.csv --requests-format csv \
+-R ../attack_report-genie_e2_standard_4_threads_N.html
