@@ -4,7 +4,11 @@ route("/") do
   serve_static_file("welcome.html")
 end
 
-const GREETING = "Welcome to Genie! This site is served by Julia $(Base.VERSION) with $(Threads.nthreads()) threads."
+if haskey(ENV, "TURN_ON_LOGGING")
+  const GREETING = "Welcome to Genie.jl! This site is served by Julia $(Base.VERSION) with $(Threads.nthreads()) threads. Logging is turned on."
+else
+  const GREETING = "Welcome to Genie.jl! This site is served by Julia $(Base.VERSION) with $(Threads.nthreads()) threads. Logging is turned off."
+end
 
 route("/greeting", named = :greeting) do
   html(GREETING)

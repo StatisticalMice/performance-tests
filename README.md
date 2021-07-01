@@ -35,7 +35,8 @@ unset JULIA_NUM_THREADS
 Genie.jl will serve content on port 12000.
 
 cd GenieApp
-./bin/server
+./bin/repl
+up()
 
 ## Run plain Julia HTTP server with
 

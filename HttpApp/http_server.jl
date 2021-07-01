@@ -9,9 +9,9 @@ function serveWelcome(req::HTTP.Request)
 end
 
 if haskey(ENV, "TURN_ON_LOGGING")
-    const GREETING = "Welcome to Genie! This site is served by HTTP.jl with Julia $(Base.VERSION) with $(Threads.nthreads()) threads. Logging is turned on."
+    const GREETING = "Welcome to HTTP.jl! This site is served by Julia $(Base.VERSION) with $(Threads.nthreads()) threads. Logging is turned on."
 else
-    const GREETING = "Welcome to Genie! This site is served by HTTP.jl with Julia $(Base.VERSION) with $(Threads.nthreads()) threads. Logging is turned off."
+    const GREETING = "Welcome to HTTP.jl! This site is served by Julia $(Base.VERSION) with $(Threads.nthreads()) threads. Logging is turned off."
 end
 
 function serveGreeting(req::HTTP.Request)
