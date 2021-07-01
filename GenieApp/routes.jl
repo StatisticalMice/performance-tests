@@ -14,6 +14,7 @@ route("/greeting", named = :greeting) do
   html(GREETING)
 end
 
+#=
 route("/random", named = :random) do
   p = haskey(_params_(), :num) ? _params_()(:num) : "1"
   num = tryparse(Int32, p)
@@ -22,4 +23,9 @@ route("/random", named = :random) do
   end
 
   json(rand(Int, num))
+end
+=#
+
+route("/random", named = :random) do
+  json(rand(Int, 1000))
 end

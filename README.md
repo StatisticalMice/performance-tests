@@ -50,7 +50,7 @@ julia --project=. http_server.jl
 Use port 11000 to test HTTP.jl. Use 12000 to test Genie.jl.
 
 cd GooseAttack  
-cargo run --release -- --host http://127.0.0.1:11000 --run-time 5m \
+cargo run --release -- --host http://10.166.0.33:12000 --run-time 5m \
 --users 50 --hatch-rate 5 --running-metrics 10 --verbose \
 --requests-file ../attack_requests.csv --requests-format csv \
 -R ../attack_report.html

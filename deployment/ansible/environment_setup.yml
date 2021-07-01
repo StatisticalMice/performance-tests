@@ -63,7 +63,7 @@
       #TODO: prevent trying to clone the second time
 
     - name: Instantiate Julia environment
-      shell: bash -ilc 'julia --project=performance-tests -e "using Pkg; Pkg.instantiate();"' 
+      shell: bash -ilc 'julia --project=performance-tests/HttpApp -e "using Pkg; Pkg.instantiate();"' 
 
     - name: Instantiate Julia environment (2)
       shell: bash -ilc 'julia --project=performance-tests/GenieApp -e "using Pkg; Pkg.instantiate();"' 
