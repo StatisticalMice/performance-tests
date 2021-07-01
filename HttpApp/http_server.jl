@@ -8,7 +8,11 @@ function serveWelcome(req::HTTP.Request)
     return HTTP.Response(200, "welcome.html")
 end
 
-const GREETING = "Welcome to Genie! This site is served by Julia $(Base.VERSION) with $(Threads.nthreads()) threads."
+if haskey(ENV, "TURN_ON_LOGGING")
+    const GREETING = "Welcome to Genie! This site is served by HTTP.jl with Julia $(Base.VERSION) with $(Threads.nthreads()) threads. Logging is turned on."
+else
+    const GREETING = "Welcome to Genie! This site is served by HTTP.jl with Julia $(Base.VERSION) with $(Threads.nthreads()) threads. Logging is turned off."
+end
 
 function serveGreeting(req::HTTP.Request)
     return HTTP.Response(200, GREETING)
@@ -28,5 +32,8 @@ HTTP.@register(ROUTER, "GET", "/", serveWelcome)
 HTTP.@register(ROUTER, "GET", "/greeting", serveGreeting)
 HTTP.@register(ROUTER, "GET", "/random", serveRandom)
 
-Logging.global_logger(NullLogger())
-HTTP.serve(ROUTER, Sockets.localhost, 8000)
+if !haskey(ENV, "TURN_ON_LOGGING")
+    Logging.global_logger(NullLogger())
+end
+
+HTTP.serve(ROUTER, Sockets.localhost, 11000)

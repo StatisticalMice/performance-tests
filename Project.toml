@@ -1,6 +1,0 @@
-[deps]
-BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
-Genie = "c43c736e-a2d1-11e8-161f-af95117fbd1e"
-HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
-JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
-ReadableRegex = "cbbcb084-453d-4c4c-b292-e315607ba6a4"

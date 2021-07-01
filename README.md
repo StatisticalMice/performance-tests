@@ -4,24 +4,52 @@ Web based performance tests
 https://genieframework.github.io/Genie.jl/dev/index.html  
 https://docs.rs/crate/goose/0.11.2
 
-## Threading
+## Rules
 
-export JULIA_NUM_THREADS=auto
+Performance tests are run with two configurations: 
+- One thread without logging
+- Multiple threads without logging (number of threads equal to virtual cores)
+
+For troubleshooting testing, run with logging on the console.
+
+Performance testing is run for:
+- "/greeting"
+- "/random"
+
+## Configuring
+
+To run with 8 threads, set this environment variable:
+export JULIA_NUM_THREADS=8
+
+To turn on logging to the console, create this environment variable:
+export TURN_ON_LOGGING=anyvaluehere
+
+Without these environment variables, Julia runs on a single thread, and web servers are configured to produce no logging.
+
+To turn off these environment variables, use:
+unset TURN_ON_LOGGING
+unset JULIA_NUM_THREADS
 
 ## Run Genie web server with
 
-./start_genie.sh&
+Genie.jl will serve content on port 12000.
+
+cd GenieApp
+./bin/server
 
 ## Run plain Julia HTTP server with
 
-./start_http.sh&
+HTTP.jl will serve content on port 11000.
+
+cd HttpApp
+julia --project=. http_server.jl
 
 ## Disturb the geese
 
-./disturb_geese.sh
+Use port 11000 to test HTTP.jl. Use 12000 to test Genie.jl.
 
-## Python Flask App
-
-https://flask.palletsprojects.com/en/2.0.x/  
-You'll need flask installed.  
-python FlaskApp/main.py  
+cd GooseAttack  
+cargo run --release -- --host http://127.0.0.1:11000 --run-time 5m \
+--users 50 --hatch-rate 5 --running-metrics 10 --verbose \
+--requests-file ../attack_requests.csv --requests-format csv \
+-R ../attack_report.html

@@ -24,4 +24,8 @@ function initialize_logging()
   nothing
 end
 
-Logging.global_logger(NullLogger())
+if haskey(ENV, "TURN_ON_LOGGING")
+  initialize_logging()
+else
+  Logging.global_logger(NullLogger())
+end
