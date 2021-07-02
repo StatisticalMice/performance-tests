@@ -36,4 +36,4 @@ if !haskey(ENV, "TURN_ON_LOGGING")
     Logging.global_logger(NullLogger())
 end
 
-HTTP.serve(ROUTER, Sockets.localhost, 11000)
+HTTP.serve(ROUTER, "0.0.0.0", 11000)

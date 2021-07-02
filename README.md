@@ -56,10 +56,13 @@ HTTP.jl
 =======
 cargo run --release -- --host http://127.0.0.1:11000 --run-time 2m \
 --users 50 --hatch-rate 5 --running-metrics 10 --verbose \
--R ../attack_report-http_e2_standard_4_threads_N.html
+-R reports/attack_report-http_e2_standard_4_threads_N.html
 
 Genie.jl
 ========
 cargo run --release -- --host http://127.0.0.1:12000 --run-time 2m \
 --users 50 --hatch-rate 5 --running-metrics 10 --verbose \
--R ../attack_report-genie_e2_standard_4_threads_N.html
+-R reports/attack_report-genie_e2_standard_4_threads_N.html
+
+Copying the reports from GCP:
+gcloud compute scp --recurse  perftest-geese-vm-2f670eabed7796cd:/home/arihuttunen/performance-tests/GooseAttack/reports/ .
