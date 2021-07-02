@@ -54,14 +54,14 @@ cd GooseAttack
 
 HTTP.jl
 =======
-cargo run --release -- --host http://127.0.0.1:11000 --run-time 2m \
---users 50 --hatch-rate 5 --running-metrics 10 --verbose \
+cargo run --release -- --host http://127.0.0.1:11000 --run-time 5m \
+--users 1000 --hatch-rate 100 --running-metrics 15 --verbose \
 -R reports/attack_report-http_e2_standard_4_threads_N.html
 
 Genie.jl
 ========
-cargo run --release -- --host http://127.0.0.1:12000 --run-time 2m \
---users 50 --hatch-rate 5 --running-metrics 10 --verbose \
+cargo run --release -- --host http://127.0.0.1:12000 --run-time 5m \
+--users 1000 --hatch-rate 100 --running-metrics 15 --verbose \
 -R reports/attack_report-genie_e2_standard_4_threads_N.html
 
 Copying the reports from GCP:
