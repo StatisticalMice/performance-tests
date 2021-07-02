@@ -18,7 +18,6 @@ function serveGreeting(req::HTTP.Request)
     return HTTP.Response(200, GREETING)
 end
 
-#=
 function serveRandom(req::HTTP.Request)
     p = get(queryparams(URI(req.target)), "num", "1")
     num = tryparse(Int32, p)
@@ -27,11 +26,6 @@ function serveRandom(req::HTTP.Request)
     end
 
     return HTTP.Response(200, JSON3.write(rand(Int, num)))
-end
-=#
-
-function serveRandom(req::HTTP.Request)
-    json(rand(Int, 1000))
 end
 
 HTTP.@register(ROUTER, "GET", "/", serveWelcome)

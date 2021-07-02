@@ -54,14 +54,12 @@ cd GooseAttack
 
 HTTP.jl
 =======
-cargo run --release -- --host http://10.166.0.35:11000 --run-time 2m \
+cargo run --release -- --host http://127.0.0.1:11000 --run-time 2m \
 --users 50 --hatch-rate 5 --running-metrics 10 --verbose \
---requests-file ../attack_requests-http.csv --requests-format csv \
 -R ../attack_report-http_e2_standard_4_threads_N.html
 
 Genie.jl
 ========
-cargo run --release -- --host http://10.166.0.35:12000 --run-time 2m \
+cargo run --release -- --host http://127.0.0.1:12000 --run-time 2m \
 --users 50 --hatch-rate 5 --running-metrics 10 --verbose \
---requests-file ../attack_requests-genie.csv --requests-format csv \
 -R ../attack_report-genie_e2_standard_4_threads_N.html
